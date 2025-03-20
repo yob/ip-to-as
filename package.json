@@ -1,0 +1,22 @@
+{
+  "name": "ip-to-as",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lookup": "node src/ip-to-as.js"
+  },
+  "type": "module",
+  "bin": {
+    "ip-to-as": "./src/ip-to-as.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ip-ptr": "^3.0.0",
+    "ipaddr.js": "^2.2.0"
+  }
+}
