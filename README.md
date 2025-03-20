@@ -1,6 +1,6 @@
 # ip-to-as
 
-Lookup the Autonomus System that and IPv4/IPv6 belongs to and print the details.
+Lookup the Autonomous System that an IPv4/IPv6 belongs to and print the details.
 
 ## IPv6
 ```
@@ -44,4 +44,4 @@ name:  LEVEL3, US
 potaroo: http://bgp.potaroo.net/cgi-bin/as-report?as=AS3356&view=2.0
 ```
 
-This is a port of an old ruby script I've used for years, mainly so I can practice javascript.
+This is a port of [an old ruby script I've used for years](https://github.com/yob/dotfiles/blob/main/bin/ip-to-as), mainly so I can practice javascript.
