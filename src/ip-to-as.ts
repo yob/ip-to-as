@@ -14,7 +14,7 @@ function getTxt(hostname: string): Promise<string> {
   return new Promise((resolve, reject) => {
     dns.resolveTxt(hostname, (err, hostnames) => {
       if (err != null) {
-        reject(new Error("unable to resolve '" + hostname + "'"));
+        reject(new Error(`unable to resolve '${hostname}'`));
         return;
       }
       resolve(hostnames.join("\n"));
@@ -63,16 +63,16 @@ if (ip.kind() === "ipv4") {
 }
 
 if (as_number != null) {
-  log("IP: " + ip.toString());
-  log("AS: " + as_number);
+  log(`IP: ${ip.toString()}`);
+  log(`AS: ${as_number}`);
 
   var resNext = await getTxt("AS" + as_number + ".asn.cymru.com")
   var [as, country, registry, date, name] = resNext.split("|")
-  log("country: " + country)
-  log("registry: " + registry)
-  log("date: " + date)
-  log("name: " + name)
-  log("potaroo: http://bgp.potaroo.net/cgi-bin/as-report?as=AS" + as_number + "&view=2.0")
+  log(`country: ${country}`)
+  log(`registry: ${registry}`)
+  log(`date: ${date}`)
+  log(`name: ${name}`)
+  log(`potaroo: http://bgp.potaroo.net/cgi-bin/as-report?as=AS${as_number}&view=2.0`)
 } else {
   log("no result");
   process.exit(1)
