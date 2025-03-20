@@ -5,18 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lookup": "node src/ip-to-as.js"
+    "lookup": "tsm src/ip-to-as.ts"
   },
   "type": "module",
   "bin": {
-    "ip-to-as": "./src/ip-to-as.js"
+    "ip-to-as": "./src/ip-to-as.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/node": "^22.13.10",
     "ip-ptr": "^3.0.0",
-    "ipaddr.js": "^2.2.0"
+    "ipaddr.js": "^2.2.0",
+    "tsm": "^2.3.0"
   }
 }

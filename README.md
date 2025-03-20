@@ -4,7 +4,7 @@ Lookup the Autonomus System that and IPv4/IPv6 belongs to and print the details.
 
 ## IPv6
 ```
-$ node src/ip-to-as.js 2404:6800:400a:804::200e
+$ tsm src/ip-to-as.ts 2404:6800:400a:804::200e
 IP: 2404:6800:400a:804::200e
 AS: 15169
 country:  US 
@@ -16,7 +16,7 @@ potaroo: http://bgp.potaroo.net/cgi-bin/as-report?as=AS15169&view=2.0
 
 ## IPv4
 ```
-$ node src/ip-to-as.js 1.1.1.1
+$ tsm src/ip-to-as.ts 1.1.1.1
 IP: 1.1.1.1
 AS: 13335
 country:  US 
@@ -33,7 +33,7 @@ This is also supported:
 $ npm run lookup 4.4.4.4
 
 > ip-to-as@1.0.0 lookup
-> node src/ip-to-as.js 4.4.4.4
+> tsm src/ip-to-as.ts 4.4.4.4
 
 IP: 4.4.4.4
 AS: 3356

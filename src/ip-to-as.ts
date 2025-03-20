@@ -6,11 +6,11 @@ import dns from 'node:dns';
 
 const usage = "ip-to-as.ts <ipv4/ipv6>";
 
-function log(message) {
+function log(message: string): void {
   console.log(message);
 }
 
-function getTxt(hostname) {
+function getTxt(hostname: string): Promise<string> {
   return new Promise((resolve, reject) => {
     dns.resolveTxt(hostname, (err, hostnames) => {
       if (err != null) {
@@ -29,6 +29,8 @@ if (args.length == 0) {
   process.exit(1);
 }
 
+var ip: (ipaddr.IPv4 | ipaddr.IPv6);
+
 try {
   var ip = ipaddr.parse(args[0]);
 } catch {
@@ -36,32 +38,36 @@ try {
   process.exit(1);
 }
 
-var as_number;
+var as_number: (string | null) = null;
 var asRegex = /^(\d+).*/;
 
 if (ip.kind() === "ipv4") {
-  var reverseHostname = ipPtr(ip.toString());
+  var reverseHostname: (string) = ipPtr(ip.toString());
   reverseHostname = reverseHostname.replace("in-addr.arpa", "origin.asn.cymru.com")
   var data = await getTxt(reverseHostname);
   var res = asRegex.exec(data);
-  as_number = res[1];
+  if (res != null) {
+    as_number = res[1];
+  }
 } else if (ip.kind() === "ipv6") {
-  var reverseHostname = ipPtr(ip.toString());
+  var reverseHostname: (string) = ipPtr(ip.toString());
   reverseHostname = reverseHostname.replace("ip6.arpa", "origin6.asn.cymru.com")
   var data = await getTxt(reverseHostname);
   var res = asRegex.exec(data);
-  as_number = res[1];
+  if (res != null) {
+    as_number = res[1];
+  }
 } else {
   log(usage);
   process.exit(1);
 }
 
-if (as_number != undefined) {
+if (as_number != null) {
   log("IP: " + ip.toString());
   log("AS: " + as_number);
 
-  res = await getTxt("AS" + as_number + ".asn.cymru.com")
-  var [as, country, registry, date, name] = res.split("|")
+  var resNext = await getTxt("AS" + as_number + ".asn.cymru.com")
+  var [as, country, registry, date, name] = resNext.split("|")
   log("country: " + country)
   log("registry: " + registry)
   log("date: " + date)
