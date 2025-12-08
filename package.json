@@ -18,7 +18,7 @@
   "dependencies": {
     "@types/node": "^22.13.13",
     "ip-ptr": "^3.0.0",
-    "ipaddr.js": "^2.2.0",
+    "ipaddr.js": "^2.3.0",
     "tsm": "^2.3.0"
   }
 }
